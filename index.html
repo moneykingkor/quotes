@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File List: Captions & Images</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 80%;
+      margin: 20px auto;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .file-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .file-item {
+      width: 300px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+    .file-item img {
+      width: 100%;
+      height: auto;
+    }
+    .file-item a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+    .file-item a:hover {
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Captions & Images</h1>
+
+  <div class="file-list">
+    <!-- Captions List -->
+    <div class="file-item">
+      <h3>Captions</h3>
+      <ul id="caption-list"></ul>
+    </div>
+
+    <!-- Images List -->
+    <div class="file-item">
+      <h3>Images</h3>
+      <ul id="image-list"></ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.onload = function() {
+    let captionList = '';
+    let imageList = '';
+
+    for (let i = 1; i <= 1000; i++) {
+      let index = i.toString().padStart(5, '0');
+      
+      // 텍스트 파일 목록 생성
+      captionList += `<li><a href="caption_${index}.txt" target="_blank">caption_${index}.txt</a></li>`;
+      
+      // 이미지 파일 목록 생성
+      imageList += `
+        <li>
+          <a href="img_${index}.jpg" target="_blank">
+            <img src="img_${index}.jpg" alt="Image ${index}">
+            img_${index}.jpg
+          </a>
+        </li>`;
+    }
+
+    // 생성된 목록 HTML 삽입
+    document.getElementById('caption-list').innerHTML = captionList;
+    document.getElementById('image-list').innerHTML = imageList;
+  };
+</script>
+
+</body>
+</html>
